@@ -11,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.nossaclinica.api.config.json.NaoSimDeserializer;
 import com.nossaclinica.api.config.json.NaoSimSerialize;
 import com.nossaclinica.api.enums.NaoSim;
 
@@ -45,12 +48,14 @@ public class Contato implements Serializable{
 	
 	@Column(name = "instagram")
 	private String instagram;
-		
+	
+	@Email
 	@Column(name = "email")
 	private String email;
 	
 	@Column(name = "tem_whatsapp")
 	@JsonSerialize(using = NaoSimSerialize.class)
+	@JsonDeserialize(using = NaoSimDeserializer.class)
 	@Enumerated(EnumType.ORDINAL)
 	private NaoSim temWhatsApp;
 	

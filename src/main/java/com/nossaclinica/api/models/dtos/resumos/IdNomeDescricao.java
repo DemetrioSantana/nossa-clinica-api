@@ -1,4 +1,4 @@
-package com.nossaclinica.api.models.summaries.tdos;
+package com.nossaclinica.api.models.dtos.resumos;
 
 import java.io.Serializable;
 

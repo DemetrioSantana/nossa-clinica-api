@@ -8,7 +8,7 @@ CREATE SEQUENCE IF NOT EXISTS cidade_id_seq
 	
 CREATE TABLE cidades (
 	id_cidade 	 			BIGINT DEFAULT NEXTVAL('cidade_id_seq'),
-	nome					VARCHAR(200)  NOT NULL,
+	nome					VARCHAR(200) UNIQUE NOT NULL,
 	uf		 				VARCHAR(2),
 	
 	PRIMARY KEY (id_cidade)
@@ -26,9 +26,9 @@ CREATE TABLE enderecos (
 	id_endereco	 			BIGINT DEFAULT NEXTVAL('endereco_id_seq'),
 	logradouro				VARCHAR(200)  NOT NULL,
 	tipo_de_rua				SMALLINT,
-	numero	 				VARCHAR(20)   UNIQUE NOT NULL,
-	bairro					VARCHAR(200)  UNIQUE NOT NULL,	
-	cep						VARCHAR(20)   UNIQUE NOT NULL,
+	numero	 				VARCHAR(20)   NULL,
+	bairro					VARCHAR(200)  NULL,	
+	cep						VARCHAR(20)   NULL,
 	cidade_id				BIGINT NOT NULL,
 	
 	PRIMARY KEY (id_endereco),

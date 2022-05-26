@@ -1,7 +1,6 @@
 package com.nossaclinica.api.models.entities;
 
 import java.io.Serializable;
-import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.nossaclinica.api.config.json.NaoSimDeserializer;
 import com.nossaclinica.api.config.json.NaoSimSerialize;
 import com.nossaclinica.api.config.json.PermissaoSerialize;
 import com.nossaclinica.api.enums.NaoSim;
@@ -60,6 +61,7 @@ public class Usuario implements Serializable{
 	
 	@Column(name = "ativo")
 	@JsonSerialize(using = NaoSimSerialize.class)
+	@JsonDeserialize(using = NaoSimDeserializer.class)
 	@Enumerated(EnumType.ORDINAL)
 	private NaoSim ativo;
 	
@@ -79,10 +81,5 @@ public class Usuario implements Serializable{
 		return this.ativo;
 	}
 	
-	public String getSenha() {
-		if (this.senha == null)
-			return String.valueOf(new Random()).substring(0, 8);
-		return this.senha;		
-	}
-		
+			
 }

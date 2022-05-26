@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -39,17 +43,19 @@ public class Cliente implements Serializable {
 	@SequenceGenerator(name = "cliente_id_seq",sequenceName = "cliente_id_seq", initialValue = 1, allocationSize = 1)
 	private Long idCliente;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contato_id")
 	private Contato contato;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 	
+	@NotBlank
 	@Column(name = "nome")
 	private String nome;
 	
+	@CPF
 	@Column(name = "cpf", unique = true, length = 15)
 	private String cpf;
 	

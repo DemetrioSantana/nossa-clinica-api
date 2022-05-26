@@ -10,7 +10,7 @@ public enum NaoSim {
 	N(0, false),
 	S(1, true);
 	
-	private int id;
+	private Integer id;
 	private boolean value;
 
 }

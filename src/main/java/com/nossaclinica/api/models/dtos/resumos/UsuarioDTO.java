@@ -1,14 +1,14 @@
-package com.nossaclinica.api.models.summaries.tdos;
+package com.nossaclinica.api.models.dtos.resumos;
 
 import java.io.Serializable;
 
 import com.nossaclinica.api.enums.Permissao;
-import com.nossaclinica.api.models.tdos.PerfilDTO;
+import com.nossaclinica.api.models.dtos.PerfilDTO;
 
 import lombok.Data;
 
 @Data
-public class UserDTO implements Serializable{
+public class UsuarioDTO implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
